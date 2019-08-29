@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://in28minutes.com/courses"
-        xmlns:tns="http://in28minutes.com/courses" elementFormDefault="qualified">
+           targetNamespace="http://in28minutes.com/courses"
+           xmlns:tns="http://in28minutes.com/courses" elementFormDefault="qualified">
     <xs:element name="GetCourseDetailsRequest">
         <xs:complexType>
             <xs:sequence>
@@ -49,12 +49,17 @@
     <xs:element name="DeleteCourseDetailsResponse">
         <xs:complexType>
             <xs:sequence>
-<!--                1 - success, 0 - error-->
-                <xs:element name="status" type="xs:int"/>
+                <xs:element name="status" type="tns:Status"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
 
+    <xs:simpleType name="Status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUCCESS"/>
+            <xs:enumeration value="FAILURE"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
 

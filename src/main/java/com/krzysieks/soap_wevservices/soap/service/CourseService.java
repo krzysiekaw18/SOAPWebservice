@@ -1,6 +1,7 @@
 package com.krzysieks.soap_wevservices.soap.service;
 
 import com.krzysieks.soap_wevservices.soap.bean.Course;
+import com.krzysieks.soap_wevservices.soap.enums.StatusEnum;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -36,18 +37,18 @@ public class CourseService {
         }
     }
 
-    public int deleteById(int id) {
+    public StatusEnum deleteById(int id) {
         Iterator<Course> iterator = listOfCourses.iterator();
         while (iterator.hasNext()) {
             Course course = iterator.next();
             if (course.getId() == id) {
                 iterator.remove();
                 System.out.println("Course is deleted");
-                return 1;
+                return StatusEnum.SUCCESS;
             }
         }
         System.out.println("ERROR: course is not deleted");
-        return 0;
+        return StatusEnum.FAILURE;
     }
 
 }
